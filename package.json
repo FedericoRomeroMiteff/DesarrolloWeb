@@ -1,0 +1,15 @@
+{
+  "name": "preentrega1-romeromiteff",
+  "version": "1.0.0",
+  "description": "Proyecto de DW",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fede",
+  "license": "ISC",
+  "dependencies": {
+    "animate.css": "^4.1.1",
+    "aos": "^2.3.4"
+  }
+}
