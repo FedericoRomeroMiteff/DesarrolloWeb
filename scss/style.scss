@@ -13,8 +13,22 @@ $color1: yellow;
 $color2: white;
 $color3: grey;
 
+//Map
+$font-sizes: (
+ "extra-small":15px,
+ "small": 17px,
+ "medium": 20px,
+ "large": 30px,
+ "extra-large": 50px
+ );
+
+//Extend
+%grids{
+    display:grid
+}
+
 body {
-    display:grid;
+    @extend %grids;
     background-color: $color0;
     position: relative;
     width: 100%;
@@ -23,25 +37,7 @@ body {
     align-items:center;
 }
 
-.navegacion {
-    background-color: $color2;
-    color:$color0;
-    padding: 4px 10px;
-    width: 100%;
-    height: 60px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: space-between;
-    z-index:100;
-    
-    .nav_item active{
-        display: flex;
-        align-items: center;
-        
-    }
-} 
+
 
     a{
         color: $color2;
@@ -54,21 +50,21 @@ body {
         color:$color1;
         text-align: center;
         background-color: $color0;
-        font-size:50px;
+        @debug map-get($font-sizes, "extra-large");
         }
         
     h2{
         color:$color0;
         text-align:center;
         background-color: $color1;
-        font-size:30px;
+        @debug map-get($font-sizes, "large");
         font:$font;
         }
     h3,h4{
         color:$color1;
         text-align:center;
         background-color: $color0;
-        font-size:20px;
+        @debug map-get($font-sizes, "small");
         font:$font;
     }
     
@@ -76,20 +72,20 @@ body {
         color:$color0;
         text-align:center;
         background-color: $color1;
-        font-size:15px;
+        @debug map-get($font-sizes, "extra-small");
         font:$font;
     }
     
     p{
         color:$color3;
         text-align: center;
-        font-size: 15px;
+        @debug map-get($font-sizes, "extra-small");
         font:$font;
     }
     
     
     .grid-container {
-        display:grid;
+        @extend %grids;
     }
     
     
@@ -124,7 +120,7 @@ body {
     }
     
     .link h3 {
-        font-size: 18px;
+        @debug map-get($font-sizes, "small");
         font:$font;
         color:$color2;
         text-transform: uppercase;
@@ -132,7 +128,7 @@ body {
     }
     
     .link a {
-        font-size: 17px;
+        @debug map-get($font-sizes, "small");
         font:$font;
         color:$color2;
         display: block;
@@ -148,7 +144,7 @@ body {
         padding:14px;
         outline: none;
         border: 2px solid $color0;
-        font-size: 17px;
+        @debug map-get($font-sizes, "small");
         font:$font;
         margin-bottom:15px;
         color:$color0;
@@ -174,7 +170,7 @@ body {
         display: flex;
         justify-content: space-between; 
         & p {
-        font-size: 15px;
+        @debug map-get($font-sizes, "small");
         font:$font;
         color: $color2
     }
@@ -215,16 +211,29 @@ body {
 }
 
 //Mixin and include
-@mixin card($ancho, $alto){
-    border-radius: 4px;
-    padding: 4px;
-    font-size: 15px;
+@mixin dimensiones($ancho, $alto){
+    background-color: $color2;
+    color:$color0;
+    padding: 4px 10px;
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    z-index:100;
     font:$font;
     width: $ancho;
     height: $alto;
 }
+
+ .navegacion {
+    @include dimensiones (350px,400px);
  
-.card-user{
-    @include card(350px,400px);
-}
+    .nav_item active{
+        display: flex;
+        align-items: center;
+    }
+   } 
 
